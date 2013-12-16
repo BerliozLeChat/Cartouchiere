@@ -24,12 +24,15 @@ using namespace std;
  * 
  */
 int main() {
+	
+	cartouchiere cart;
+    cart_init(cart,5);   
+    
     T_ELT rep;
     cout << "donnez une valeur "<<endl;
     cin >> rep;
     
-    cartouchiere cart;
-    cart_init(cart,5);   
+   
          
     int p= ajout(cart,rep);      
     cout<< p << ":" << valeurEn(cart,p) << endl; 
