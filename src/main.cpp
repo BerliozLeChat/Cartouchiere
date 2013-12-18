@@ -34,7 +34,7 @@ int main() {
     
    
          
-    int p= ajout(cart,rep);      
+    int p= ajout(cart,rep);   
     cout<< p << ":" << valeurEn(cart,p) << endl; 
     
     return 0;

@@ -8,8 +8,17 @@
 #ifndef CARTOUCHIERE_H
 #define	CARTOUCHIERE_H
 
-// le type T_ELT doit etre defini avant 
-typedef ;
+typedef struct maillon maillon;
+struct maillon{
+	T_ELT * elt;
+	maillon * suivant;
+};
+
+struct cartouchiere{
+	maillon * tete;
+	int max;
+};
+
 
 #endif	/* CARTOUCHIERE_H */
 
