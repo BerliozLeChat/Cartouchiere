@@ -8,18 +8,18 @@ using namespace std;
 
 void cart_init(cartouchiere & c, int n ){ 
 	c.max=n;
-	maillon tete;
-	tete.elt = NULL;
-	tete.suivant = NULL;
-	c.tete = &tete;
+	maillon * tete;
+	tete->elt = NULL;
+	tete->suivant = NULL;
+	c.tete = tete;
 	if(n>1){
 		int i = 1;
-		maillon ptr = tete;
+		maillon * ptr = tete;
 		while(i<n){
-			maillon mm;
-			mm.elt = NULL;
-			mm.suivant = NULL;
-			ptr.suivant =&mm;
+			maillon * mm;
+			mm->elt = NULL;
+			mm->suivant = NULL;
+			ptr->suivant =mm;
 			ptr=mm;
 			++i;
 		}
@@ -31,20 +31,22 @@ bool estLibre(const cartouchiere & c, int p){
 	
 	if(p>=c.max)
 		return false;
-	maillon ptr = *(c.tete);
+	maillon * ptr = c.tete;
 	if(p==0){
-		if(ptr.elt==NULL)
+		if(ptr->elt==NULL)
 			return true;
-		else
-			return false;	
+		else{
+			cout << ptr->elt<<endl;
+			return false;
+		}	
 	}	
 		
 	int i = 0;
 	while(i<p){
-		ptr = *(ptr.suivant);
+		ptr = ptr->suivant;
 		++i;
 	}
-	if(ptr.elt==NULL)
+	if(ptr->elt==NULL)
 		return true;
 	else
 		return false;
@@ -54,18 +56,20 @@ int ajout(cartouchiere & c,T_ELT t){
 	int i=0;
 	while(!estLibre(c,i)){
 		++i;
+		cout << "test"<<endl;
 	}
-	maillon ptr = *(c.tete);
+	cout << "ok "<<endl;
+	maillon * ptr = c.tete;
 	if(i==0){
-		ptr.elt=&t;
+		ptr->elt=&t;
 	}
 	else{
 		int p = 0;
 		while(p<i){
-			ptr = *(ptr.suivant);
+			ptr = ptr->suivant;
 			++p;
 		}
-		ptr.elt=&t;
+		ptr->elt=&t;
 	}
 	return i;
 }
